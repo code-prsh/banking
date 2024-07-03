@@ -26,6 +26,8 @@ const {
         USER_COLLECTION_ID!,
         [Query.equal('userId', [userId])]
       )
+
+      console.log(user);
   
       return parseStringify(user.documents[0]);
     } catch (error) {
@@ -119,6 +121,8 @@ export async function getLoggedInUser() {
     try {
       const { account } = await createSessionClient();
       const result= await account.get();
+
+      console.log(result);
 
       const user=await getUserInfo({userId: result.$id})
 
